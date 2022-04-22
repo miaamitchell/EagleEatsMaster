@@ -8,6 +8,6 @@
     </asp:GridView>
     <br />
     <br />
-    <asp:FormView ID="FormView1" runat="server">
+    <asp:FormView ID="FormView1" runat="server" OnItemInserted="FormView1_ItemInserted">
     </asp:FormView>
 </asp:Content>

@@ -21,7 +21,7 @@
     <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:EagleEatsDBConnectionString %>" SelectCommand="SELECT * FROM [Route]"></asp:SqlDataSource>
     <br />
     <br />
-    <asp:FormView ID="FormView1" runat="server" DataKeyNames="Route_Id" DataSourceID="SqlDataSource2">
+    <asp:FormView ID="FormView1" runat="server" DataKeyNames="Route_Id" DataSourceID="SqlDataSource2" OnItemInserted="FormView1_ItemInserted" OnItemUpdated="FormView1_ItemUpdated">
         <EditItemTemplate>
             Route_Id:
             <asp:Label ID="Route_IdLabel1" runat="server" Text='<%# Eval("Route_Id") %>' />
@@ -132,7 +132,7 @@
             &nbsp;<asp:LinkButton ID="NewButton" runat="server" CausesValidation="False" CommandName="New" Text="New" />
         </ItemTemplate>
     </asp:FormView>
-    <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:EagleEatsDBConnectionString %>" DeleteCommand="DELETE FROM Route WHERE (Route_Id = @Route_Id)" InsertCommand="INSERT INTO Route(Sender_Id, Receiver_Id, Object_Id, FromLocation, ToLocation, RequestionTime, BeginTime, EndTime, RouteCost, RouteDistance) VALUES (@Sender_Id, @Receiver_Id, @Object_Id, @FromLocation, @ToLocation, @RequestionTime, @BeginTime, @EndTime, @RouteCost, @RouteDistance)" SelectCommand="SELECT * FROM Route" UpdateCommand="UPDATE Route SET Sender_Id = @Sender_Id, Receiver_Id = @Receiver_Id, Object_Id = @Object_Id, FromLocation = @FromLocation, ToLocation = @ToLocation, RequestionTime = @RequestionTime, BeginTime = @BeginTime, EndTime = @EndTime, RouteCost = @RouteCost, RouteDistance = @RouteDistance WHERE (Route_Id = @Route_Id)">
+    <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:EagleEatsDBConnectionString %>" DeleteCommand="DELETE FROM Route WHERE (Route_Id = @Route_Id)" InsertCommand="INSERT INTO Route(Sender_Id, Receiver_Id, Object_Id, FromLocation, ToLocation, RequestionTime, BeginTime, EndTime, RouteCost, RouteDistance) VALUES (@Sender_Id, @Receiver_Id, @Object_Id, @FromLocation, @ToLocation, @RequestionTime, @BeginTime, @EndTime, @RouteCost, @RouteDistance)" SelectCommand="SELECT Route_Id, Sender_Id, Receiver_Id, Object_Id, FromLocation, ToLocation, RequestionTime, BeginTime, EndTime, RouteCost, RouteDistance FROM Route WHERE (Route_Id = @Route_Id)" UpdateCommand="UPDATE Route SET Sender_Id = @Sender_Id, Receiver_Id = @Receiver_Id, Object_Id = @Object_Id, FromLocation = @FromLocation, ToLocation = @ToLocation, RequestionTime = @RequestionTime, BeginTime = @BeginTime, EndTime = @EndTime, RouteCost = @RouteCost, RouteDistance = @RouteDistance WHERE (Route_Id = @Route_Id)">
         <DeleteParameters>
             <asp:Parameter Name="Route_Id" />
         </DeleteParameters>
@@ -148,6 +148,9 @@
             <asp:Parameter Name="RouteCost" />
             <asp:Parameter Name="RouteDistance" />
         </InsertParameters>
+        <SelectParameters>
+            <asp:ControlParameter ControlID="GridView1" DefaultValue="1" Name="Route_Id" PropertyName="SelectedValue" />
+        </SelectParameters>
         <UpdateParameters>
             <asp:Parameter Name="Sender_Id" />
             <asp:Parameter Name="Receiver_Id" />
