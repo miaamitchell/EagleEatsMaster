@@ -13,5 +13,21 @@ namespace EagleEatsMaster
         {
 
         }
+
+        protected void Btn_Login_Click(object sender, EventArgs e)
+        {
+            //1. obtain session from server
+
+            //2. check if user is in session
+
+            //3. redirect to delivery page
+
+        }
+        protected void btnSignup_Click(object sender, EventArgs e)
+        {
+            //redirect to signup page
+            Response.Redirect("~/SignUp.aspx");
+        }
+
     }
 }
