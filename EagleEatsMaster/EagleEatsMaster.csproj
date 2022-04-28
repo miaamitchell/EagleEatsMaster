@@ -83,6 +83,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="DriverCenter.aspx" />
     <Content Include="Home.aspx" />
     <Content Include="Route.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
@@ -102,6 +103,13 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DriverCenter.aspx.cs">
+      <DependentUpon>DriverCenter.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DriverCenter.aspx.designer.cs">
+      <DependentUpon>DriverCenter.aspx</DependentUpon>
+    </Compile>
     <Compile Include="EagleEats.Master.cs">
       <DependentUpon>EagleEats.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
