@@ -68,6 +68,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Route.aspx" />
+    <Content Include="style.css" />
     <Content Include="User.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
